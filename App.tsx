@@ -8,11 +8,11 @@ import {
   Tag, BarChart3, PieChart, Info, Users, Box, Hash, Globe2, AlertTriangle, Search,
   Building2, ImageIcon, FileText, ClipboardList, X, Maximize2, Mail, ThumbsUp, ThumbsDown
 } from 'lucide-react';
-import { InspectionList, ProductEntry, ListStatus, User, ExtractedData, AppNotification } from './types';
-import { SmartScanner } from './components/CameraCapture';
-import { ManualUpload } from './components/ManualUpload';
-import { extractDataFromPhotos } from './services/geminiService';
-import { supabase } from './services/supabase';
+import { InspectionList, ProductEntry, ListStatus, User, ExtractedData, AppNotification } from './types.ts';
+import { SmartScanner } from './components/CameraCapture.tsx';
+import { ManualUpload } from './components/ManualUpload.tsx';
+import { extractDataFromPhotos } from './services/geminiService.ts';
+import { supabase } from './services/supabase.ts';
 import * as XLSX from 'xlsx';
 
 const getCnpjRaiz = (cnpj: string | string[]): string => {

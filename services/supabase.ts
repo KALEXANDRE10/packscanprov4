@@ -1,18 +1,14 @@
 
 import { createClient } from '@supabase/supabase-js';
 
-// Credenciais fornecidas para integração direta
-const supabaseUrl = 'https://oocyvbexigpaqgucqcwc.supabase.co';
-const supabaseAnonKey = 'sb_publishable_UE3CY9AkCcnRTPNVyvPQaQ_2DNwzY_w';
+// Credenciais lidas das variáveis de ambiente injetadas pelo Vite/Vercel
+const supabaseUrl = process.env.SUPABASE_URL || '';
+const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || '';
 
-/**
- * Inicialização protegida do cliente Supabase.
- * Evita o erro "supabaseUrl is required" ou falhas de parse de chave que impedem o app de abrir.
- */
 const createSafeClient = () => {
   try {
     if (!supabaseUrl || !supabaseAnonKey || !supabaseUrl.startsWith('http')) {
-      console.warn("Supabase: URL ou Chave inválida.");
+      console.warn("Supabase: Aguardando configuração de variáveis de ambiente no Vercel.");
       return null;
     }
     return createClient(supabaseUrl, supabaseAnonKey);
